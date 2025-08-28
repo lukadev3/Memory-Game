@@ -36,4 +36,20 @@ router.post(
   }
 )
 
+router.delete(
+    "/me",
+    passport.authenticate("jwt", { session: false }),
+    async (req, res) => {
+        try {
+            if (!req.user) {
+                return res.status(401).json({ message: "Unauthorized" })
+            }
+            await AuthService.deleteUser(req.user._id)
+            res.json({ message: "User and all their games deleted successfully" })
+        } catch (err) {
+            res.status(500).json({ message: err.message })
+        }
+    }
+)
+
 module.exports = router

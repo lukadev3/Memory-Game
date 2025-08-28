@@ -10,7 +10,13 @@ var getJwt = function(user)
     return user.generateJwt();
 }
 
+var deleteUser = async function(userId) {
+    await GameModel.deleteMany({ user: userId })
+    return await UserModel.findByIdAndDelete(userId)
+}
+
 module.exports = {
     register,
-    getJwt
+    getJwt,
+    deleteUser
 }
