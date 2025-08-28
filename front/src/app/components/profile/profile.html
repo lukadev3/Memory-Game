@@ -1,0 +1,31 @@
+<div *ngIf="user">
+  <h2>Profile: {{ user.name }}</h2>
+  <p>Email: {{ user.email }}</p>
+
+  <h3>My Games</h3>
+  <div *ngIf="games.length === 0">
+    <p>No games played yet.</p>
+  </div>
+  <table *ngIf="games.length > 0">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Score</th>
+        <th>Moves</th>
+        <th>Duration</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let game of games; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ game.score }}</td>
+        <td>{{ game.moves }}</td>
+        <td>{{ game.duration | number:'1.0-2' }}s</td>
+        <td>{{ game.createdAt | date:'short' }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<p *ngIf="message">{{ message }}</p>

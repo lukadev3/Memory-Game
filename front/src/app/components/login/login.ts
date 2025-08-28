@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { AuthService } from '../../services/auth-service';
 import { Router } from '@angular/router';
 
@@ -13,16 +13,25 @@ export class Login {
   password = ''
   message = ''
 
-  constructor(private auth: AuthService, private router: Router) {}
+  constructor(private auth: AuthService, private router: Router, private cd: ChangeDetectorRef) {}
+
+  ngOnInit() {
+    this.auth.validateToken().subscribe({
+      next: () => this.router.navigate(['/game']),
+      error: () => {}
+    });
+  }
 
   login() {
     this.auth.login(this.email, this.password).subscribe({
       next: res => {
-        this.auth.saveToken(res.token) 
-        this.message = 'Logged in successfully!'
-        this.router.navigate(['/game']) 
+        this.auth.saveToken(res.token);
+        this.message = 'Logged in successfully!';
+        this.router.navigate(['/game']);
       },
-      error: err => this.message = 'Error: ' + err.error.message
-    })
+      error: err => {
+        this.message = 'Error: ' + err.error.message;
+      }
+    });
   }
 }

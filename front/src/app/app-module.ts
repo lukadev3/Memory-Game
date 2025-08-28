@@ -7,12 +7,20 @@ import { Register } from './components/register/register';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { Login } from './components/login/login';
+import { Navbar } from './components/navbar/navbar';
+import { Game } from './components/game/game';
+import { PageNotFound } from './components/page-not-found/page-not-found';
+import { Profile } from './components/profile/profile';
 
 @NgModule({
   declarations: [
     App,
     Register,
-    Login
+    Login,
+    Navbar,
+    Game,
+    PageNotFound,
+    Profile
   ],
   imports: [
     BrowserModule,
@@ -22,7 +30,6 @@ import { Login } from './components/login/login';
   ],
   providers: [
     provideBrowserGlobalErrorListeners(),
-    provideZonelessChangeDetection(),
     provideClientHydration(withEventReplay())
   ],
   bootstrap: [App]

@@ -1,0 +1,13 @@
+<button *ngIf="!gameStarted" (click)="startGame()">New Game</button>
+
+<div *ngIf="gameStarted" class="game-grid">
+  <div class="card" *ngFor="let card of cards" (click)="flipCard(card)">
+    <div class="front" *ngIf="card.flipped || card.matched">{{ card.value }}</div>
+    <div class="back" *ngIf="!card.flipped && !card.matched">?</div>
+  </div>
+</div>
+
+<div *ngIf="gameStarted">
+  <div>Moves: {{ moves }}</div>
+  <div>Score: {{ score }}</div>
+</div>

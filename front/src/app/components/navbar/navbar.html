@@ -1,0 +1,10 @@
+<nav>
+  <ul>
+    <li *ngIf="!auth.getToken()"><a routerLink="/register">Register</a></li>
+    <li *ngIf="!auth.getToken()"><a routerLink="/login">Login</a></li>
+    <li *ngIf="auth.getToken()"><a routerLink="/game">Game</a></li>
+    <li *ngIf="auth.getToken()"><a routerLink="/leaderboard">Leaderboard</a></li>
+    <li *ngIf="auth.getToken()"><a routerLink="/profile">Profile</a></li>
+    <li *ngIf="auth.getToken()"><a href="#" (click)="logout()">Logout</a></li>
+  </ul>
+</nav>
