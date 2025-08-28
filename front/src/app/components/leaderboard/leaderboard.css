@@ -8,30 +8,28 @@
   box-sizing: border-box;
 }
 
-h2, h3 {
+h2 {
   margin-bottom: 15px;
   color: #333;
   text-align: left;
   width: 100%;
-  max-width: 600px;
+  max-width: 700px;
 }
 
-p {
-  margin-top: 10px;
-  color: #333; 
-  font-size: 14px;
-  text-align: left;
+.error {
+  color: red;
+  margin-bottom: 10px;
+}
+
+.leaderboard-container {
   width: 100%;
-  max-width: 600px;
-}
-
-.table-container {
-  width: 100%; 
+  max-width: 720px;
+  background-color: #fff;
   border: 1px solid #ccc;
   border-radius: 5px;
-  background-color: #fff;
+  padding: 10px;
   overflow-y: auto;
-  max-height: 520px; 
+  max-height: 520px; /* za oko 12 redova */
 }
 
 table {
@@ -40,7 +38,7 @@ table {
 }
 
 th, td {
-  padding: 15px; 
+  padding: 12px;
   border-bottom: 1px solid #ccc;
   text-align: center;
   font-size: 14px;
@@ -55,12 +53,8 @@ th {
   z-index: 1;
 }
 
-td:first-child, td:nth-child(2), td:nth-child(3) {
-  text-align: center; 
-}
-
-td:nth-child(1), td:nth-child(2) {
-  text-align: left; 
+td:first-child, td:nth-child(2) {
+  text-align: left; /* ime i rank levo */
 }
 
 tr:nth-child(even) {

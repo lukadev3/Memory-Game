@@ -11,7 +11,7 @@ import { Router } from '@angular/router'
   styleUrls: ['./game.css']
 })
 export class Game {
-  private cardValues = ['A','B','C','D','E','F']
+  private cardValues = ['A','B','C','D','E','F','G','H','I','J']
   cards: any[] = []
   flipped: any[] = []
   moves = 0

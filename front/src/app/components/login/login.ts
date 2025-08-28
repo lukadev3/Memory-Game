@@ -30,7 +30,7 @@ export class Login {
         this.router.navigate(['/game']);
       },
       error: err => {
-        this.message = 'Error: ' + err.error.message;
+        this.message = err.error.message;
       }
     });
   }

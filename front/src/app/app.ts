@@ -1,4 +1,5 @@
 import { Component, signal } from '@angular/core';
+import { NavigationEnd, NavigationStart, Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -8,4 +9,17 @@ import { Component, signal } from '@angular/core';
 })
 export class App {
   protected readonly title = signal('front');
+  showSpinner = false;
+
+  constructor(private router: Router) {
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationStart) {
+        this.showSpinner = true;
+
+        setTimeout(() => {
+          this.showSpinner = false;
+        }, 500);
+      }
+    });
+  }
 }

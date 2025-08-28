@@ -29,39 +29,41 @@ GameSchema.statics.getUserGames = async function(userId) {
 }
 
 GameSchema.statics.getLeaderboard = async function(limit = 10) {
-    return await this.aggregate([
-        {
-            $group: {
-                _id: "$user",
-                totalScore: { $sum: "$score" },
-                gamesPlayed: { $sum: 1 },
-                avgScore: { $avg: "$score" }
-            }
-        },
-        { $sort: { totalScore: -1 } },
-        { $limit: limit },
-        {
-            $lookup: {
-                from: "users",
-                localField: "_id",
-                foreignField: "_id",
-                as: "user"
-            }
-        },
-        { $unwind: "$user" },
-        {
-            $project: {
-                _id: 0,
-                userId: "$user._id",
-                name: "$user.name",
-                email: "$user.email",
-                totalScore: 1,
-                gamesPlayed: 1,
-                avgScore: 1
-            }
-        }
-    ])
+  const games = await this.find()
+    .populate("user", "name email") 
+    .lean()
+
+  const scoresByUser = {}
+
+  games.forEach(g => {
+    if (!g.user) return 
+    
+    const rankingScore = (g.score * 100) - (g.duration * 0.5) - (g.moves * 2)
+
+    if (!scoresByUser[g.user._id]) {
+      scoresByUser[g.user._id] = {
+        userId: g.user._id,
+        name: g.user.name,
+        email: g.user.email,
+        totalRankingScore: 0,
+        gamesPlayed: 0
+      }
+    }
+
+    scoresByUser[g.user._id].totalRankingScore += rankingScore
+    scoresByUser[g.user._id].gamesPlayed += 1
+  })
+
+  let leaderboard = Object.values(scoresByUser).map(u => ({
+    ...u,
+    avgRankingScore: u.totalRankingScore / u.gamesPlayed
+  }))
+
+  leaderboard.sort((a, b) => b.totalRankingScore - a.totalRankingScore)
+
+  return leaderboard.slice(0, limit)
 }
+
 
 var GameModel = mongoose.model("game", GameSchema)
 module.exports = GameModel

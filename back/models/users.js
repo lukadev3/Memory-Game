@@ -4,11 +4,11 @@ const jwt = require("jsonwebtoken")
 const config = require("../config")
 
 var UserSchema = mongoose.Schema({
-    name: {type: String, required: true},
-    email: {type: String, required: true},
-    admin: {type: Boolean, required: true, default: false},
-    hash: {type: String, required: true},
-    salt: {type: String, required: true}
+  name: { type: String, required: [true, "Name is required"] },
+  email: { type: String, required: [true, "Email cannot be empty"] },
+  admin: { type: Boolean, required: true, default: false },
+  hash: { type: String, required: true },
+  salt: { type: String, required: true }
 })
 
 UserSchema.methods.savePassword = function(password){

@@ -1,0 +1,30 @@
+<div class="leaderboard-container">
+  <h2>Leaderboard</h2>
+
+  <div *ngIf="error" class="error">{{ error }}</div>
+
+  <table *ngIf="!error && leaderboard.length > 0">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>User</th>
+        <th>Total Score</th>
+        <th>Games Played</th>
+        <th>Avg Score</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let g of leaderboard; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ g.name }}</td>
+        <td>{{ g.totalRankingScore }}</td>
+        <td>{{ g.gamesPlayed }}</td>
+        <td>{{ g.avgRankingScore }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="leaderboard.length === 0">
+    No results yet.
+  </div>
+</div>

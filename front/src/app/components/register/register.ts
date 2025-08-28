@@ -30,7 +30,7 @@ export class Register {
         this.auth.saveToken(res.token)
         this.router.navigate(['/game'])
       },
-      error: err => this.message = 'Error: ' + err.error.message
+      error: err => this.message = err.error.message
     })
   }
 

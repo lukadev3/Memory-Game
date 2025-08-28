@@ -7,6 +7,7 @@ import { PageNotFound } from './components/page-not-found/page-not-found';
 import { GuestGuard } from './services/guest-guard';
 import { AuthGuard } from './services/auth-guard';
 import { Profile } from './components/profile/profile';
+import { Leaderboard } from './components/leaderboard/leaderboard';
 
 const routes: Routes = [
   {
@@ -33,6 +34,10 @@ const routes: Routes = [
     path: 'profile',
     canActivate: [AuthGuard],
     component: Profile
+  },
+  {
+    path: 'leaderboard',
+    component: Leaderboard
   },
   {
     path: '**',

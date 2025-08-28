@@ -11,6 +11,7 @@ import { Navbar } from './components/navbar/navbar';
 import { Game } from './components/game/game';
 import { PageNotFound } from './components/page-not-found/page-not-found';
 import { Profile } from './components/profile/profile';
+import { Leaderboard } from './components/leaderboard/leaderboard';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { Profile } from './components/profile/profile';
     Navbar,
     Game,
     PageNotFound,
-    Profile
+    Profile,
+    Leaderboard
   ],
   imports: [
     BrowserModule,
