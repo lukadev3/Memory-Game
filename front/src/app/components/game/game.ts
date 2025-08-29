@@ -11,22 +11,16 @@ import { Router } from '@angular/router'
   styleUrls: ['./game.css']
 })
 export class Game {
-  private cardValues = ['A','B','C','D','E','F','G','H','I','J']
+  private cardValues = ['A','B','C']
   cards: any[] = []
   flipped: any[] = []
   moves = 0
   score = 0
   startTime!: number
   gameStarted = false
+  gameOverMessage: string | null = null
 
   constructor(private gameService: GameService, private auth: AuthService, private router: Router) {}
-
-  ngOnInit() {
-    this.auth.validateToken().subscribe({
-      next: () => {},
-      error: () => this.router.navigate(['/login'])
-    });
-  }
 
   startGame() {
     this.moves = 0
@@ -34,6 +28,7 @@ export class Game {
     this.flipped = []
     this.startTime = Date.now()
     this.gameStarted = true
+    this.gameOverMessage = null   
     this.cards = [...this.cardValues, ...this.cardValues]
       .sort(() => Math.random() - 0.5)
       .map(value => ({ value, flipped: false, matched: false }))
@@ -66,8 +61,14 @@ export class Game {
           duration
         }
         this.gameService.saveGame(result).subscribe()
+
         this.gameStarted = false
+        this.gameOverMessage = `Game Over! Score: ${this.score}, Moves: ${this.moves}, Time: ${duration}s`  // 👈
       }
     }
+  }
+
+  closeMessage() {
+    this.gameOverMessage = null
   }
 }

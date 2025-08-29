@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core'
 import { HttpClient, HttpHeaders } from '@angular/common/http'
-import { Observable, throwError } from 'rxjs'
+import { Observable, of, throwError } from 'rxjs'
 import { catchError } from 'rxjs/operators'
 import { CookieService } from 'ngx-cookie-service'
 
@@ -34,15 +34,23 @@ export class AuthService {
     this.cookieService.delete('token')
   }
 
-  validateToken(): Observable<any> {
+  validateToken(): Observable<{ valid: boolean; user?: any }> {
     const token = this.getToken()
-    if (!token) return throwError(() => ({ message: 'No token' }))
+    if (!token) {
+      return of({ valid: false }) 
+    }
 
     const headers = new HttpHeaders({ Authorization: `Bearer ${token}` })
-    return this.http.post(`${this.baseUrl}/validate`, {}, { headers, withCredentials: true }).pipe(
-      catchError(err => throwError(() => err))
-    )
+    return this.http.post<{ valid: boolean; user?: any }>(
+        `${this.baseUrl}/validate`,
+        {},
+        { headers, withCredentials: true }
+      ).pipe(
+        catchError(() => of({ valid: false }))
+      )
   }
+
+
 
   deleteUser(): Observable<any> {
     const token = this.getToken()

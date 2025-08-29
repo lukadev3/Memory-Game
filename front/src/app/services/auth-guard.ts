@@ -11,9 +11,15 @@ export class AuthGuard implements CanActivate{
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): MaybeAsync<GuardResult> {
     return this.auth.validateToken().pipe(
-      map(() => true),
+      map(res => {
+        if (res.valid) {
+          return true
+        }
+        this.router.navigate(['/login'])
+        return false
+      }),
       catchError(() => of(this.router.createUrlTree(['/login'])))
-    );
+    )
   }
   
 }

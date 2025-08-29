@@ -18,7 +18,7 @@ export class App {
 
         setTimeout(() => {
           this.showSpinner = false;
-        }, 500);
+        }, 200);
       }
     });
   }

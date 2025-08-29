@@ -17,13 +17,6 @@ export class Register {
 
   constructor(private auth: AuthService, private router: Router) {}
 
-  ngOnInit() {
-    this.auth.validateToken().subscribe({
-      next: () => this.router.navigate(['/game']),
-      error: () => {}
-    });
-  }
-
   register() {
     this.auth.register(this.name, this.email, this.password).subscribe({
       next: res => {

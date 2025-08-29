@@ -11,3 +11,7 @@
   <div>Moves: {{ moves }}</div>
   <div>Score: {{ score }}</div>
 </div>
+<div *ngIf="gameOverMessage" class="game-over">
+  <span>{{ gameOverMessage }}</span>
+  <span class="close-btn" (click)="closeMessage()">✖</span>
+</div>

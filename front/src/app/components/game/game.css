@@ -31,7 +31,6 @@ button:hover {
   margin-bottom: 20px;
 }
 
-/* automatski raspored u kvadrat ili blizu kvadrata */
 .game-grid {
   grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
   max-width: 500px;
@@ -63,4 +62,30 @@ button:hover {
 
 .back {
   color: #007bff;
+}
+.game-over {
+  margin-top: 20px;
+  padding: 10px 30px 10px 10px;
+  background: #e0ffe0;
+  border: 1px solid #4caf50;
+  border-radius: 6px;
+  font-weight: bold;
+  color: #2e7d32;
+  position: relative;
+  display: inline-block;
+}
+
+.close-btn {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  background: transparent;
+  border: none;
+  font-size: 10px;
+  cursor: pointer;
+  color: #2e7d32;
+}
+
+.close-btn:hover {
+  color: #d32f2f;
 }

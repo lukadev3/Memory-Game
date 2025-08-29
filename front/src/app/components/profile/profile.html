@@ -30,3 +30,8 @@
    </div>
 </div>
 <p *ngIf="message">{{ message }}</p>
+<div *ngIf="!user">
+  <div class="spinner-overlay">
+    <div class="spinner"></div>
+  </div>
+</div>

@@ -15,13 +15,6 @@ export class Login {
 
   constructor(private auth: AuthService, private router: Router, private cd: ChangeDetectorRef) {}
 
-  ngOnInit() {
-    this.auth.validateToken().subscribe({
-      next: () => this.router.navigate(['/game']),
-      error: () => {}
-    });
-  }
-
   login() {
     this.auth.login(this.email, this.password).subscribe({
       next: res => {
