@@ -11,7 +11,7 @@ import { Router } from '@angular/router'
   styleUrls: ['./game.css']
 })
 export class Game {
-  private cardValues = ['A','B','C']
+  private cardValues = ['A','B','C','D','E','F','G','H','I',"J"]
   cards: any[] = []
   flipped: any[] = []
   moves = 0
@@ -63,7 +63,7 @@ export class Game {
         this.gameService.saveGame(result).subscribe()
 
         this.gameStarted = false
-        this.gameOverMessage = `Game Over! Score: ${this.score}, Moves: ${this.moves}, Time: ${duration}s`  // 👈
+        this.gameOverMessage = `Game Over! Score: ${this.score}, Moves: ${this.moves}, Time: ${duration}s`  
       }
     }
   }
