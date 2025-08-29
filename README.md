@@ -16,8 +16,8 @@ A simple **Memory Game** application built with **Angular** and **Node.js**. Use
   - View user profile and past games
   - Delete user account
 - **Leaderboard**
-  - View top players based on average ranking score
-  - 
+  - View top players based on total ranking score
+    
 ---
 
 ## Tech Stack
