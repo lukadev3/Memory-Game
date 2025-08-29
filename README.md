@@ -17,20 +17,14 @@ A simple **Memory Game** application built with **Angular** and **Node.js**. Use
   - Delete user account
 - **Leaderboard**
   - View top players based on average ranking score
-- **Guards**
-  - AuthGuard for protecting routes
-  - GuestGuard for redirecting logged-in users
-
+  - 
 ---
 
 ## Tech Stack
 
 - **Frontend:** Angular, TypeScript, HTML, CSS  
-- **Backend:** Node.js, Express.js, MongoDB, Mongoose  
-- **Authentication:** JWT tokens stored in cookies  
-- **HTTP Client:** Angular HttpClient  
-- **State Management:** Services (AuthService, GameService)
-
+- **Backend:** Node.js, Express.js, MongoDB, Mongoose
+- 
 ---
 
 ## How To Run
