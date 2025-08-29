@@ -24,7 +24,7 @@ A simple **Memory Game** application built with **Angular** and **Node.js**. Use
 
 - **Frontend:** Angular, TypeScript, HTML, CSS  
 - **Backend:** Node.js, Express.js, MongoDB, Mongoose
-- 
+  
 ---
 
 ## How To Run
