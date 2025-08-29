@@ -1,5 +1,5 @@
 <div class="leaderboard-container">
-  <h2>Leaderboard</h2>
+  <h1>Leaderboard</h1>
 
   <div *ngIf="error" class="error">{{ error }}</div>
 
@@ -18,7 +18,7 @@
         <tr *ngFor="let g of leaderboard; let i = index">
           <td>{{ i + 1 }}</td>
           <td>{{ g.name }}</td>
-          <td>{{ g.totalRankingScore }}</td>
+          <td><b>{{ g.totalRankingScore }}</b></td>
           <td>{{ g.gamesPlayed }}</td>
           <td>{{ g.avgRankingScore }}</td>
         </tr>

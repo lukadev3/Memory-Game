@@ -7,7 +7,7 @@
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-h2 {
+h1 {
   margin-bottom: 20px;
   color: #333;
 }
@@ -18,7 +18,7 @@ input {
   margin-bottom: 15px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  font-size: 14px;
+  font-size: 18px;
   outline: none;
   transition: border-color 0.2s;
 }
@@ -37,6 +37,7 @@ button {
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.2s;
+  font-size: 18px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -47,6 +48,6 @@ button:hover {
 p {
   margin-top: 15px;
   color: red;
-  font-size: 14px;
+  font-size: 18px;
   text-align: center;
 }

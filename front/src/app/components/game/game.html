@@ -1,17 +1,33 @@
-<button *ngIf="!gameStarted" (click)="startGame()">New Game</button>
-
+<button *ngIf="!gameStarted && !difficultyChoosing" (click)="showDifficultyOptions()">
+  New Game
+</button>
+<div *ngIf="difficultyChoosing && !gameStarted && !gameOverMessage" class="difficulty-menu">
+  <button (click)="startGame('easy')">Easy</button>
+  <button (click)="startGame('hard')">Hard</button>
+  <span class="back-btn" (click)="back()">Back</span>
+</div>
+<div *ngIf="!gameStarted && !gameOverMessage" class="game-info">
+  <p>
+    Welcome to the Memory Game! <br>
+    Match all pairs of cards by flipping them two at a time. <br>
+    Try to complete the game in as few moves and as quickly as possible. <br>
+    Click "New Game" to start playing!
+  </p>
+</div>
 <div *ngIf="gameStarted" class="game-grid">
   <div class="card" *ngFor="let card of cards" (click)="flipCard(card)">
     <div class="front" *ngIf="card.flipped || card.matched">{{ card.value }}</div>
     <div class="back" *ngIf="!card.flipped && !card.matched">?</div>
   </div>
 </div>
-
 <div *ngIf="gameStarted">
-  <div>Moves: {{ moves }}</div>
-  <div>Score: {{ score }}</div>
+  <div><b>Moves: {{ moves }}</b></div>
+  <div><b>Score: {{ score }}</b></div>
 </div>
 <div *ngIf="gameOverMessage" class="game-over">
-  <span>{{ gameOverMessage }}</span>
+  <p class="game-message">{{ gameOverMessage }}</p>
+  <p class="game-info">
+    Great job! The game is over. You can start a new game by clicking "New Game".
+  </p>
   <span class="close-btn" (click)="closeMessage()">✖</span>
 </div>

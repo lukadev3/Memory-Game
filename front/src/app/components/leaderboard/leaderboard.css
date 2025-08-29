@@ -4,11 +4,11 @@
   align-items: center;
   padding: 20px;
   background-color: white;
-  font-family: Arial, sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   box-sizing: border-box;
 }
 
-h2 {
+h1 {
   margin-bottom: 15px;
   color: #333;
   text-align: left;
@@ -22,6 +22,7 @@ h2 {
 }
 
 .leaderboard-container {
+  margin-top: 30px;
   width: 100%;
   max-width: 720px;
   background-color: #fff;
@@ -63,7 +64,7 @@ th, td {
   padding: 12px;
   border-bottom: 1px solid #ccc;
   text-align: center;
-  font-size: 14px;
+  font-size: 18px;
 }
 
 th {

@@ -1,4 +1,6 @@
 const UserModel = require("../models/users")
+const GameModel = require("../models/game")
+
 
 var register = function(body)
 {

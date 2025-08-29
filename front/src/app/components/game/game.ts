@@ -11,7 +11,8 @@ import { Router } from '@angular/router'
   styleUrls: ['./game.css']
 })
 export class Game {
-  private cardValues = ['A','B','C','D','E','F','G','H','I',"J"]
+  private easyValues = ['A','B','C','D','E']
+  private hardValues = ['A','B','C','D','E','F','G','H','I',"J"]
   cards: any[] = []
   flipped: any[] = []
   moves = 0
@@ -19,17 +20,32 @@ export class Game {
   startTime!: number
   gameStarted = false
   gameOverMessage: string | null = null
+  showInfo = true
+  difficultyChoosing = false 
 
   constructor(private gameService: GameService, private auth: AuthService, private router: Router) {}
 
-  startGame() {
+  showDifficultyOptions() {
+    this.difficultyChoosing = true
+  }
+
+  back() {
+    this.difficultyChoosing = false;
+  }
+
+  startGame(mode: 'easy' | 'hard') {
     this.moves = 0
     this.score = 0
     this.flipped = []
     this.startTime = Date.now()
     this.gameStarted = true
-    this.gameOverMessage = null   
-    this.cards = [...this.cardValues, ...this.cardValues]
+    this.gameOverMessage = null
+    this.showInfo = false
+    this.difficultyChoosing = false
+
+    const chosenValues = mode === 'easy' ? this.easyValues : this.hardValues
+
+    this.cards = [...chosenValues, ...chosenValues]
       .sort(() => Math.random() - 0.5)
       .map(value => ({ value, flipped: false, matched: false }))
   }
@@ -53,7 +69,7 @@ export class Game {
       }
       this.flipped = []
 
-      if (this.score === this.cardValues.length) {
+      if (this.score === (this.cards.length / 2)) {
         const duration = Math.floor((Date.now() - this.startTime) / 1000)
         const result: GameResult = {
           score: this.score,
@@ -63,7 +79,8 @@ export class Game {
         this.gameService.saveGame(result).subscribe()
 
         this.gameStarted = false
-        this.gameOverMessage = `Game Over! Score: ${this.score}, Moves: ${this.moves}, Time: ${duration}s`  
+        this.showInfo = true
+        this.gameOverMessage = `Game Over! Score: ${this.score}, Moves: ${this.moves}, Time: ${duration}s`
       }
     }
   }

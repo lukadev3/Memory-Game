@@ -13,6 +13,7 @@ export class Profile implements OnInit {
   user: any;
   games: any[] = [];
   message: string = '';
+  showDeleteModal: boolean = false;
 
   constructor(
     private auth: AuthService,
@@ -35,5 +36,18 @@ export class Profile implements OnInit {
       next: games => this.games = games,
       error: err => this.message = err.error?.message || 'Error loading games'
     });
+  }
+
+  confirmDelete() {
+    this.auth.deleteUser().subscribe({
+      next: () => {
+        this.auth.logout();
+        this.router.navigate(['/register']);
+      },
+      error: (err) => {
+        this.message = err.error?.message || 'Failed to delete account';
+      }
+    });
+    this.showDeleteModal = false;
   }
 }

@@ -2,7 +2,22 @@
   <h2>Profile: {{ user.name }}</h2>
   <p>Email: {{ user.email }}</p>
 
-  <h3>My Games</h3>
+  <button (click)="showDeleteModal = true" class="delete-button">
+    Delete My Account
+  </button>
+
+  <div class="modal-overlay" *ngIf="showDeleteModal">
+    <div class="modal">
+      <h3>Confirm Account Deletion</h3>
+      <p>Are you sure you want to delete your account? This action cannot be undone.</p>
+      <div class="modal-buttons">
+        <button (click)="confirmDelete()" class="confirm-btn">Confirm</button>
+        <button (click)="showDeleteModal = false" class="cancel-btn">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <h2>My Games</h2>
   <div *ngIf="games.length === 0">
     <p>No games played yet.</p>
   </div>
@@ -14,6 +29,7 @@
           <th>Score</th>
           <th>Moves</th>
           <th>Duration</th>
+          <th>Total Score</th>
           <th>Date</th>
         </tr>
       </thead>
@@ -23,6 +39,7 @@
           <td>{{ game.score }}</td>
           <td>{{ game.moves }}</td>
           <td>{{ game.duration | number:'1.0-2' }}s</td>
+          <td><b>{{ game.score * 100 - game.moves * 2 - game.duration * 0.5 }}</b></td>
           <td>{{ game.createdAt | date:'short' }}</td>
         </tr>
       </tbody>
