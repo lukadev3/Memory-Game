@@ -109,3 +109,10 @@ tr:nth-child(even) {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+.no-data {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #777;
+}

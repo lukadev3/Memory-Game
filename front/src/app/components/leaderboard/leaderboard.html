@@ -25,10 +25,10 @@
       </tbody>
     </table>
   </div>
-
-  <div *ngIf="leaderboard.length === 0">
-    <div class="spinner-overlay">
-      <div class="spinner"></div>
-    </div>
+  <div *ngIf="loading" class="spinner-overlay">
+    <div class="spinner"></div>
+  </div>
+  <div *ngIf="!loading && leaderboard.length === 0 && !error" class="no-data">
+    No games played yet
   </div>
 </div>

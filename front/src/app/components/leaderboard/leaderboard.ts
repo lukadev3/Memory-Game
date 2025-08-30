@@ -5,7 +5,7 @@ import { GameService } from '../../services/game-service';
   selector: 'app-leaderboard',
   standalone: false,
   templateUrl: './leaderboard.html',
-  styleUrl: './leaderboard.css'
+  styleUrls: ['./leaderboard.css']
 })
 export class Leaderboard {
 
@@ -16,16 +16,23 @@ export class Leaderboard {
   constructor(private gameService: GameService) {}
 
   ngOnInit(): void {
+    this.fetchLeaderboard();
+  }
+
+  private fetchLeaderboard(): void {
+    this.loading = true;
+    this.error = null;
+
     this.gameService.getLeaderboard().subscribe({
       next: data => {
-        this.leaderboard = data;
+        this.leaderboard = data || [];
         this.loading = false;
       },
       error: err => {
         this.error = err.message || 'Failed to load leaderboard';
+        this.leaderboard = [];
         this.loading = false;
       }
     });
   }
-
 }
