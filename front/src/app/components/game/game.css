@@ -1,10 +1,12 @@
 :host {
-  margin-top: 30px;
   display: flex;
   flex-direction: column;
   align-items: center;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  padding: 20px;
+  padding: 100px;
+  background-color: #121212;
+  height: 100vh;
+  color: #e0e0e0;
 }
 
 button {
@@ -12,8 +14,8 @@ button {
   margin-bottom: 20px;
   font-size: 20px;
   font-weight: bold;
-  background-color: #007bff;
-  color: white;
+  background-color: #1e88e5;
+  color: #f5f5f5;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -22,7 +24,7 @@ button {
 }
 
 button:hover {
-  background-color: #0056b3;
+  background-color: #1565c0;
 }
 
 .game-grid {
@@ -41,8 +43,8 @@ button:hover {
 .card {
   width: 80px;
   height: 100px;
-  background-color: #f4f4f4;
-  border: 2px solid #007bff;
+  background-color: #1e1e1e;
+  border: 2px solid #1e88e5;
   border-radius: 8px;
   display: flex;
   align-items: center;
@@ -52,6 +54,7 @@ button:hover {
   cursor: pointer;
   user-select: none;
   transition: transform 0.3s;
+  color: #f5f5f5;
 }
 
 .card:hover {
@@ -59,22 +62,23 @@ button:hover {
 }
 
 .front {
-  color: #333;
+  color: #e0e0e0;
 }
 
 .back {
-  color: #007bff;
+  color: #64b5f6;
 }
+
 .game-over {
   margin-top: 20px;
-  padding: 10px 30px 10px 10px;
-  background: #e0ffe0;
-  border: 1px solid #4caf50;
+  padding: 20px 40px 20px 40px;
+  background-color: #1c1c1c;
+  color: #e0e0e0;
   border-radius: 6px;
   font-weight: bold;
-  color: #2e7d32;
   position: relative;
   display: inline-block;
+  box-shadow: 0 0 20px rgba(30, 144, 255, 0.5); 
 }
 
 .close-btn {
@@ -85,24 +89,26 @@ button:hover {
   border: none;
   font-size: 14px;
   cursor: pointer;
-  color: #2e7d32;
+  color: #42a5f5;
 }
 
 .close-btn:hover {
-  color: #d32f2f;
+  color: #ef5350;
 }
+
 .game-info {
-  background-color: #f0f8ff;
-  border: 2px solid #3498db;
+  margin-top: 20px;
+  background-color: #1c1c1c;
+  border: 1px solid #42a5f5;
   padding: 15px;
   margin-bottom: 20px;
   border-radius: 8px;
   text-align: center;
   font-size: 20px;
-  color: #333;
+  color: #e0e0e0;
 }
 
-.game-message{
+.game-message {
   font-size: 20px;
 }
 
@@ -111,12 +117,13 @@ button:hover {
   gap: 12px;
   justify-content: center;
 }
+
 .back-btn {
   padding: 10px 20px;
   margin-bottom: 20px;
   font-size: 20px;
-  background-color: #f44336;
-  color: white;
+  background-color: #e53935;
+  color: #f5f5f5;
   font-weight: bold;
   cursor: pointer;
   border-radius: 5px;
@@ -124,5 +131,5 @@ button:hover {
 }
 
 .back-btn:hover {
-  background-color: #d32f2f;
+  background-color: #c62828;
 }

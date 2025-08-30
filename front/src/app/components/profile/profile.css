@@ -2,15 +2,17 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
-  background-color: white;
+  padding: 40px;
+  background-color: #121212;
+  height: 100vh;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   box-sizing: border-box;
+  color: #e0e0e0;
 }
 
-h2{
+h2 {
   margin-bottom: 15px;
-  color: #333;
+  color: #f5f5f5;
   text-align: left;
   width: 100%;
   max-width: 600px;
@@ -18,14 +20,15 @@ h2{
 
 h3 {
   margin-bottom: 15px;
-  color: #333;
+  color: #f5f5f5;
   text-align: center;
   width: 100%;
   max-width: 600px;
 }
+
 p {
   margin-top: 10px;
-  color: #333; 
+  color: #e0e0e0; 
   font-size: 18px;
   text-align: left;
   width: 100%;
@@ -34,12 +37,13 @@ p {
 
 .table-container {
   width: 100%; 
-  border: 1px solid #ccc;
+  border: 1px solid #333;
   border-radius: 5px;
-  background-color: #fff;
+  background-color: #1e1e1e;
   overflow-y: auto;
   max-height: 480px; 
 }
+
 .table-container::-webkit-scrollbar {
   width: 6px; 
 }
@@ -49,17 +53,17 @@ p {
 }
 
 .table-container::-webkit-scrollbar-thumb {
-  background-color: rgba(0,0,0,0.2); 
+  background-color: rgba(255,255,255,0.2); 
   border-radius: 10px;
 }
 
 .table-container::-webkit-scrollbar-thumb:hover {
-  background-color: rgba(0,0,0,0.3); 
+  background-color: rgba(255,255,255,0.3); 
 }
 
 .table-container {
   scrollbar-width: thin;         
-  scrollbar-color: rgba(0,0,0,0.2) transparent; 
+  scrollbar-color: rgba(255,255,255,0.2) transparent; 
 }
 
 table {
@@ -69,14 +73,15 @@ table {
 
 th, td {
   padding: 15px; 
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid #333;
   text-align: center;
   font-size: 18px;
+  color: #e0e0e0;
 }
 
 th {
-  background-color: #007bff;
-  color: white;
+  background-color: #1e88e5;
+  color: #f5f5f5;
   font-weight: bold;
   position: sticky;
   top: 0;
@@ -92,15 +97,16 @@ td:nth-child(1), td:nth-child(2) {
 }
 
 tr:nth-child(even) {
-  background-color: #f9f9f9;
+  background-color: #1c1c1c;
 }
+
 .spinner-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(255,255,255,1);
+  background-color: rgba(18,18,18,0.95);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -108,8 +114,8 @@ tr:nth-child(even) {
 }
 
 .spinner {
-  border: 6px solid #f3f3f3;
-  border-top: 6px solid #007bff;
+  border: 6px solid #333;
+  border-top: 6px solid #1e88e5;
   border-radius: 50%;
   width: 60px;
   height: 60px;
@@ -127,7 +133,7 @@ tr:nth-child(even) {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgba(0,0,0,0.7);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -136,13 +142,14 @@ tr:nth-child(even) {
 }
 
 .modal {
-  background-color: #fff;
+  background-color: #1e1e1e;
   padding: 20px;
   border-radius: 8px;
   width: 400px;
   max-width: 90%;
   text-align: center;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+  color: #e0e0e0;
 }
 
 .modal-buttons {
@@ -153,8 +160,8 @@ tr:nth-child(even) {
 
 .confirm-btn, .delete-button {
   font-size: 18px;
-  background-color: #e74c3c;
-  color: white;
+  background-color: #e53935;
+  color: #f5f5f5;
   border: none;
   padding: 10px 20px;
   border-radius: 5px;
@@ -165,8 +172,8 @@ tr:nth-child(even) {
 
 .cancel-btn {
   font-size: 18px;
-  background-color: #95a5a6;
-  color: white;
+  background-color: #757575;
+  color: #f5f5f5;
   border: none;
   padding: 10px 20px;
   border-radius: 5px;
@@ -176,9 +183,9 @@ tr:nth-child(even) {
 }
 
 .confirm-btn:hover, .delete-button:hover {
-  background-color: #c0392b;
+  background-color: #c62828;
 }
 
 .cancel-btn:hover {
-  background-color: #7f8c8d;
+  background-color: #616161;
 }
